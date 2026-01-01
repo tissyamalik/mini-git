@@ -1,0 +1,14 @@
+# ets you compile everything easily using one command
+CC = gcc
+CFLAGS = -Wall
+OBJS = main.o repository.o file_utils.o
+
+minigit: $(OBJS)
+	$(CC) $(CFLAGS) -o minigit $(OBJS)
+
+main.o: main.c repository.h
+repository.o: repository.c repository.h file_utils.h
+file_utils.o: file_utils.c file_utils.h
+
+clean:
+	rm -f *.o minigit
